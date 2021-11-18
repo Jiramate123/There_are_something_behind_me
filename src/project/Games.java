@@ -1,4 +1,5 @@
 package project;
+
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -34,7 +35,8 @@ public class Games{
     File Knock = new File("Knock.wav");
     File Win = new File("Winsound.wav");
     File Jump = new File("Jumpsound.wav");
-    
+    File Gun = new File("Shotgun.wav");
+    File Close = new File("Close.wav");
     Font titleFont = new Font("Times New Roman", Font.PLAIN, 45);
     Font normalFont = new Font("Times New Roman",Font.PLAIN,28);
                                //customize the font
@@ -50,22 +52,23 @@ public class Games{
         window.setSize(800,600);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.getContentPane().setBackground(Color.black);
-        window.setTitle("There are something behind me!");
+        window.setTitle("There are something behind me!(please use headphone)");
         window.setLayout(null);
         window.setVisible(true);
         con = window.getContentPane();
-        
-        
         titleNamePanel = new JPanel();
         titleNamePanel.setBounds(100,100,600,90);
                                  //x  //y //width //height
         titleNamePanel.setBackground(Color.black);
+        
         titleNameLabel= new JLabel("There are something Behind me!");
                             //Type Title
         titleNameLabel.setFont(titleFont);
          //show
         titleNameLabel.setForeground(Color.red);
                             //color of the text
+                            
+                            
         startButtonPanel = new JPanel();
         startButtonPanel.setBounds(300,350,200,100);
         startButtonPanel.setBackground(Color.black);
@@ -182,12 +185,17 @@ public class Games{
         itemLabelname.setFont(normalFont);
         itemLabelname.setForeground(Color.white);
         playerPanel.add(itemLabelname);
-        
-        
-      
+  
         playerSetup();
     }
 
+       public class TitleScreenHandler implements ActionListener{
+        public void actionPerformed(ActionEvent event){
+            createGameScreen();
+        }
+    }
+    
+    
     public void playerSetup(){
         playerInsane=15;
         item = "Bare hand";
@@ -492,7 +500,7 @@ public class Games{
      }
      public void ending(){
          position = "ending";
-         mainTextArea.setText("You are surive!!!          Thanks ");
+         mainTextArea.setText("            You are surive!!!    Thanks ");
          choice1.setVisible(false);
          choice2.setVisible(false);
          choice3.setVisible(false);
@@ -777,7 +785,7 @@ public class Games{
          choice4.setText(""); 
      }
      
-   
+
    public void Sound(File name){
        try{
         Clip clierror = AudioSystem.getClip();
@@ -789,12 +797,7 @@ public class Games{
     }
 }
 
-        public class TitleScreenHandler implements ActionListener{
-        public void actionPerformed(ActionEvent event){
-            createGameScreen();
 
-        }
-    }
        public class ChoiceHandler implements ActionListener{
            public void actionPerformed(ActionEvent event){
                //if you click choice 1 button we will put in the your Choice
@@ -905,7 +908,7 @@ public class Games{
                }break;
                     case"Opendoor":
                         switch(yourChoice){
-                            case "c1": Closedoor(); break;
+                            case "c1": Closedoor();Sound(Close); break;
                             case "c2": Talktoher(); Sound(ni); break;
                             case "c3":
                                      if(playerInsane<1){
@@ -957,7 +960,7 @@ public class Games{
                             case"c1": Sofa(); break;
                             case"c2": TV(); break;
                             case"c3": Cupboard(); break;
-                            case"c4": firstfloor(); break;
+                            case"c4": firstfloor();Sound(Close); break;
                         }
                         break;
                     case"Cupboard":
@@ -977,7 +980,7 @@ public class Games{
                         switch(yourChoice){
                             case"c1": Sofa(); break;
                             case"c2": TV(); break;
-                            case"c3": firstfloor(); break;
+                            case"c3": firstfloor();Sound(Close); break;
                         }
                         break;
                     case"TV":
@@ -989,7 +992,7 @@ public class Games{
                         switch(yourChoice){
                             case"c1": Sofa(); break;
                             case"c2": Cupboard(); break;
-                            case"c3": firstfloor(); break;
+                            case"c3": firstfloor();Sound(Close); break;
                         } break;
                     case"cantopen":
                         switch(yourChoice){
@@ -1003,7 +1006,7 @@ public class Games{
                     case"SofaCup":switch(yourChoice){
                             case"c1": TV(); break;
                             case"c2": Cupboard(); break;
-                            case"c3": firstfloor(); break;
+                            case"c3": firstfloor();Sound(Close); break;
                     }
                     break;
                     
@@ -1022,7 +1025,7 @@ public class Games{
                                          shower();
                                      }
                                      break;
-                        case"c3":  firstfloor(); break;
+                        case"c3":  firstfloor(); Sound(Close);break;
                         case"c4": if(shot==1){
                             shotsed();
                         }else{
@@ -1063,7 +1066,7 @@ public class Games{
                             }else{
                                 Cross();
                             }break;
-                            case"c4":firstfloor(); break;
+                            case"c4":firstfloor();Sound(Close); break;
                     }
                     break;
                     case"desk":switch(yourChoice){
@@ -1093,7 +1096,7 @@ public class Games{
                     }break;
                     case"Shotget":switch(yourChoice){
                             case"c1": if(shot==1){
-                                shootthat();
+                                shootthat();Sound(Gun);
                             }else{
                                 cantdo();
                             }break;
@@ -1107,7 +1110,7 @@ public class Games{
                     }break;
                      case"Kubma":switch(yourChoice){
                             case"c1": if(shot==1){
-                                shootthat();
+                                shootthat();Sound(Gun);
                             }else{
                                 cantdo();
                             }break;

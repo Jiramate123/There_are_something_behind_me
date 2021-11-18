@@ -37,6 +37,10 @@ public class Games{
     File Jump = new File("Jumpsound.wav");
     File Gun = new File("Shotgun.wav");
     File Close = new File("Close.wav");
+    File Jumptwo = new File("Jumptwo.wav");
+    File safe = new File("safe.wav");
+    
+    
     Font titleFont = new Font("Times New Roman", Font.PLAIN, 45);
     Font normalFont = new Font("Times New Roman",Font.PLAIN,28);
                                //customize the font
@@ -784,8 +788,6 @@ public class Games{
          choice3.setText("");
          choice4.setText(""); 
      }
-     
-
    public void Sound(File name){
        try{
         Clip clierror = AudioSystem.getClip();
@@ -1015,7 +1017,7 @@ public class Games{
                                          lose();Sound(Jump);
                                      }
                                      else{
-                                         toilet();
+                                         toilet(); Sound(Jumptwo);
                                      }
                                      break;
                         case"c2": if(playerInsane<1){
@@ -1118,7 +1120,7 @@ public class Games{
                     }break;
                     case"yingset":switch(yourChoice){
                             case"c1": if(code==1){
-                                Checkthesafe();
+                                Checkthesafe(); Sound(safe);
                             }else{
                                 Checkthesafe2();
                             }break;
@@ -1132,7 +1134,7 @@ public class Games{
                             case"c1": Openclose(); break;
                     }break;
                     case"openc":switch(yourChoice){
-                            case"c1": yingset(); break;
+                            case"c1": yingset();Sound(Jumptwo); break;
                             case"c2": Run(); break;
                     }break;
                     case"safe":switch(yourChoice){
@@ -1156,6 +1158,11 @@ public class Games{
                }
            }
        }
+       //ending
+       /*true and fastest ending (get the flashlight - Open it - Check under the bed - go back to center-open the door
+        talk to her- walk to 1st - check bathroom - check shower- goback-check sink-go to main lobby-Check office-
+       Check the closet -check behind the closet- shoot - open the closet- open safe -check safe-go to front door
+       */
 }
 
 
